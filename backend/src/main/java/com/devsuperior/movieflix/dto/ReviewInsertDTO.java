@@ -6,33 +6,29 @@ import javax.validation.constraints.NotBlank;
 
 import com.devsuperior.movieflix.entities.Review;
 
-public class ReviewDTO implements Serializable {
+public class ReviewInsertDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	
 	@NotBlank(message = "Campo obrigatório")
 	private String text;
+	private Long movieId;
 	
-	private UserDTO user;
-	private MovieDTO movie;
-	
-	public ReviewDTO() {
+	public ReviewInsertDTO() {
 	}
 
-	public ReviewDTO(Long id, String text, UserDTO user, MovieDTO movie) {
+	public ReviewInsertDTO(Long id, String text, Long movieId) {
 		super();
 		this.id = id;
 		this.text = text;
-		this.user = user;
-		this.movie = movie;
+		this.movieId = movieId;
 	}
-	
-	public ReviewDTO(Review entity) {
+
+	public ReviewInsertDTO(Review entity) {
 		id = entity.getId();
 		text = entity.getText();
-		user = new UserDTO(entity.getUser());
-		movie = new MovieDTO(entity.getMovie());
+		movieId = entity.getMovie().getId();
 	}
 
 	public Long getId() {
@@ -51,19 +47,11 @@ public class ReviewDTO implements Serializable {
 		this.text = text;
 	}
 
-	public UserDTO getUser() {
-		return user;
+	public Long getMovieId() {
+		return movieId;
 	}
 
-	public void setUser(UserDTO user) {
-		this.user = user;
-	}
-
-	public MovieDTO getMovie() {
-		return movie;
-	}
-
-	public void setMovie(MovieDTO movie) {
-		this.movie = movie;
+	public void setMovieId(Long movieId) {
+		this.movieId = movieId;
 	}
 }

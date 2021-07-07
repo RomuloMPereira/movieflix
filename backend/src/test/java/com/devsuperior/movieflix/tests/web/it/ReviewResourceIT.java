@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import com.devsuperior.movieflix.dto.ReviewDTO;
+import com.devsuperior.movieflix.dto.ReviewInsertDTO;
 import com.devsuperior.movieflix.repositories.ReviewRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -44,7 +44,7 @@ public class ReviewResourceIT {
 	@Value("${security.oauth2.client.client-secret}")
 	private String clientSecret;
 
-	private ReviewDTO newReviewDTO;
+	private ReviewInsertDTO newReviewInsertDTO;
 	private String visitorUsername;
 	private String visitorPassword;
 	private String memberUsername;
@@ -58,15 +58,15 @@ public class ReviewResourceIT {
 		memberUsername = "ana@gmail.com";
 		memberPassword = "123456";
 
-		newReviewDTO = new ReviewDTO();
-		newReviewDTO.setText("Good good good");
-		newReviewDTO.getMovie().setId(1L); //newReviewDTO.setMovieId(1L);
+		newReviewInsertDTO = new ReviewInsertDTO();
+		newReviewInsertDTO.setText("Good good good");
+		newReviewInsertDTO.setMovieId(1L);; 
 	}
 
 	@Test
 	public void insertShouldReturnUnauthorizedWhenNotValidToken() throws Exception {
 
-		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
+		String jsonBody = objectMapper.writeValueAsString(newReviewInsertDTO);
 
 		ResultActions result =
 				mockMvc.perform(post("/reviews")
@@ -82,7 +82,7 @@ public class ReviewResourceIT {
 
 		String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
 
-		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
+		String jsonBody = objectMapper.writeValueAsString(newReviewInsertDTO);
 
 		ResultActions result =
 				mockMvc.perform(post("/reviews")
@@ -99,7 +99,7 @@ public class ReviewResourceIT {
 
 		String accessToken = obtainAccessToken(memberUsername, memberPassword);
 
-		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
+		String jsonBody = objectMapper.writeValueAsString(newReviewInsertDTO);
 
 		long expectedCount = reviewRepository.count() + 1;
 
@@ -123,8 +123,8 @@ public class ReviewResourceIT {
 
 		String accessToken = obtainAccessToken(memberUsername, memberPassword);
 
-		newReviewDTO.setText("     ");
-		String jsonBody = objectMapper.writeValueAsString(newReviewDTO);
+		newReviewInsertDTO.setText("     ");
+		String jsonBody = objectMapper.writeValueAsString(newReviewInsertDTO);
 
 		ResultActions result =
 				mockMvc.perform(post("/reviews")
