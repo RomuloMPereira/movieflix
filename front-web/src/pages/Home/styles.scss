@@ -1,0 +1,32 @@
+.home-container {
+    padding: 55px 145px 0px 115px;
+    display: flex;
+    flex-direction: row;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    padding-right: 150px;
+}
+
+.text-title {
+    font-size: 55px;
+    line-height: 75px;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    padding-bottom: 20px;
+}
+
+.text-subtitle {
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+    color: #f2f2f2;
+    padding-bottom: 50px;
+}
+
+.home-image {
+    width: 414.86px;
+    height: 307px;
+}
