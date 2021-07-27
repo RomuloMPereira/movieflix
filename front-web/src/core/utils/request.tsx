@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import { CLIENT_ID, CLIENT_SECRET } from './auth';
+import history from './history';
 
 type LoginData = {
     username: string;
@@ -28,3 +29,12 @@ export const makeLogin = (loginData: LoginData) => {
 
     return makeRequest({ url: '/oauth/token', data: payload, method: 'POST', headers });
 }
+
+axios.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    if (error.response.status === 401) {
+        history.push('/auth/login');
+    }
+    return Promise.reject(error);
+});
