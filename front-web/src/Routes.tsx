@@ -1,4 +1,5 @@
 import Navbar from 'core/components/Navbar';
+import PrivateRoute from 'core/components/Routes/PrivateRoute';
 import history from 'core/utils/history';
 import Catalog from 'pages/Catalog';
 import Home from 'pages/Home';
@@ -14,9 +15,9 @@ const Routes = () => {
                 <Route path="/" exact>
                     <Home />
                 </Route>
-                <Route path="/movies" exact>
+                <PrivateRoute path="/movies" allowedRoles={['ROLE_VISITOR', 'ROLE_MEMBER']}>
                     <Catalog />
-                </Route>
+                </PrivateRoute>
             </Switch>
         </Router>
     );
