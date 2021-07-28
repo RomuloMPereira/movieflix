@@ -1,8 +1,22 @@
-import React from 'react';
+import { MoviesResponse } from 'core/types/Movie';
+import { makePrivateRequest } from 'core/utils/request';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useCallback } from 'react';
 import MovieCard from './components/MovieCard';
 import './styles.scss';
 
 const Catalog = () => {
+    const [moviesResponse, setMoviesResponse] = useState<MoviesResponse>();
+
+    const getMovies = useCallback(() => {
+        makePrivateRequest({ url: '/movies' })
+            .then(response => setMoviesResponse(response.data))
+    }, []);
+
+    useEffect(() => {
+        getMovies();
+    }, [getMovies]);
 
     return (
         <div className="catalog-container">
@@ -10,13 +24,9 @@ const Catalog = () => {
                 <h3>Filtro</h3>
             </div>
             <div className="catalog-movies">
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
+                {moviesResponse?.content.map(movie => (
+                    <MovieCard movie={movie} />
+                ))}
             </div>
             <div className="pagination-container">
                 <h5>Paginação</h5>

@@ -1,18 +1,23 @@
+import { Movie } from 'core/types/Movie';
 import React from 'react';
 import './styles.scss';
 
-const MovieCard = () => {
+type Props = {
+    movie: Movie;
+}
+
+const MovieCard = ({ movie }: Props) => {
     return (
         <div className="movie-card card-base">
             <img
-                src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/hpU2cHC9tk90hswCFEpf5AtbqoL.jpg"
-                alt="Filme"
+                src={movie.imgUrl}
+                alt={movie.title}
                 className="movie-image"
             />
             <div className="movie-info">
-                <h5 className="movie-title">Os Simpsons</h5>
-                <h6 className="movie-year">2007</h6>
-                <p className="movie-description">A família Simpsons mora na cidade de Springfield</p>
+                <h5 className="movie-title">{movie.title}</h5>
+                <h6 className="movie-year">{movie.year}</h6>
+                <p className="movie-description">{movie.synopsis}</p>
             </div>
         </div>
     );

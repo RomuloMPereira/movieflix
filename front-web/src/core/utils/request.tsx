@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
-import { CLIENT_ID, CLIENT_SECRET } from './auth';
+import { CLIENT_ID, CLIENT_SECRET, getSessionData } from './auth';
 import history from './history';
 
 type LoginData = {
@@ -38,3 +38,13 @@ axios.interceptors.response.use(function (response) {
     }
     return Promise.reject(error);
 });
+
+export const makePrivateRequest = (params: AxiosRequestConfig) => {
+    const sessionData = getSessionData();
+
+    const headers = {
+        'Authorization': `Bearer ${sessionData.access_token}`
+    }
+
+    return makeRequest({ ...params, headers });
+}
