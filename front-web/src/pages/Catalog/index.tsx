@@ -1,3 +1,4 @@
+import Pagination from 'core/components/Pagination';
 import { MoviesResponse } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
 import React, { useState } from 'react';
@@ -29,7 +30,7 @@ const Catalog = () => {
                 ))}
             </div>
             <div className="pagination-container">
-                <h5>Paginação</h5>
+                <Pagination />
             </div>
         </div>
     );
