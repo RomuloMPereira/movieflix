@@ -9,11 +9,16 @@ import './styles.scss';
 
 const Catalog = () => {
     const [moviesResponse, setMoviesResponse] = useState<MoviesResponse>();
+    const [activePage, setActivePage] = useState(0);
 
     const getMovies = useCallback(() => {
-        makePrivateRequest({ url: '/movies' })
-            .then(response => setMoviesResponse(response.data))
-    }, []);
+        const params = {
+            page: activePage
+        }
+
+        makePrivateRequest({ url: '/movies', params })
+            .then(response => setMoviesResponse(response.data));
+    }, [activePage]);
 
     useEffect(() => {
         getMovies();
@@ -29,9 +34,15 @@ const Catalog = () => {
                     <MovieCard movie={movie} />
                 ))}
             </div>
-            <div className="pagination-container">
-                <Pagination />
-            </div>
+            {moviesResponse && (
+                <div className="pagination-container">
+                    <Pagination
+                        totalPages={moviesResponse.totalPages}
+                        activePage={activePage}
+                        onChange={page => setActivePage(page)}
+                    />
+                </div>
+            )}
         </div>
     );
 }
