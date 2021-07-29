@@ -1,5 +1,6 @@
+import MovieFilter from 'core/components/MovieFilter';
 import Pagination from 'core/components/Pagination';
-import { MoviesResponse } from 'core/types/Movie';
+import { Genre, MoviesResponse } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -12,10 +13,12 @@ const Catalog = () => {
     const [moviesResponse, setMoviesResponse] = useState<MoviesResponse>();
     const [activePage, setActivePage] = useState(0);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [genre, setGenre] = useState<Genre>();
 
     const getMovies = useCallback(() => {
         const params = {
-            page: activePage
+            page: activePage,
+            genreId: genre?.id
         }
 
         setIsLoading(true);
@@ -24,21 +27,27 @@ const Catalog = () => {
             .finally(() => {
                 setIsLoading(false);
             });
-    }, [activePage]);
+    }, [activePage, genre]);
 
     useEffect(() => {
         getMovies();
     }, [getMovies]);
 
+    const handleChangeGenre = (genre: Genre) => {
+        setActivePage(0);
+        setGenre(genre);
+    }
+
     return (
         <div className="catalog-container">
-            <div className="filter-container">
-                <h3>Filtro</h3>
-            </div>
+            <MovieFilter
+                genre={genre}
+                handleChangeGenre={handleChangeGenre}
+            />
             <div className="catalog-movies">
                 {isLoading ? <MovieCardLoader /> : (
                     moviesResponse?.content.map(movie => (
-                        <MovieCard movie={movie} />
+                        <MovieCard movie={movie} key={movie.id} />
                     ))
                 )}
             </div>
