@@ -7,6 +7,9 @@ type Props = {
 }
 
 const MovieCard = ({ movie }: Props) => {
+    const synopsisArray = movie.synopsis.split(' ', 15);
+    const synopsis = synopsisArray.join(' ');
+
     return (
         <div className="movie-card card-base">
             <img
@@ -17,7 +20,7 @@ const MovieCard = ({ movie }: Props) => {
             <div className="movie-info">
                 <h5 className="movie-title">{movie.title}</h5>
                 <h6 className="movie-year">{movie.year}</h6>
-                <p className="movie-description">{movie.synopsis}</p>
+                <p className="movie-description">{synopsis}...</p>
             </div>
         </div>
     );
