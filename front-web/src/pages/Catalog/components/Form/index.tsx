@@ -11,11 +11,11 @@ type FormState = {
 
 type Props = {
     movieId?: number;
+    onChange: (changed: boolean) => void
 }
 
-const Form = ({ movieId }: Props) => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormState>();
-
+const Form = ({ movieId, onChange }: Props) => {
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormState>();
 
     const onSubmit = (data: FormState) => {
         const payload = {
@@ -29,11 +29,12 @@ const Form = ({ movieId }: Props) => {
             data: payload
         })
             .then(() => {
-                console.log('Comentário salvo com sucesso!');
-                history.push(`/movies/${movieId}`)
+                history.push(`/movies/${movieId}`);
+                onChange(true);
             })
-            .catch(() => {
-                console.log('Erro ao salvar comentário!');
+            .finally(() => {
+                setValue('text', '');
+                onChange(false);
             });
     }
 
@@ -51,7 +52,9 @@ const Form = ({ movieId }: Props) => {
                         {errors.text.message}
                     </div>
                 )}
-                <button className="movie-details-btn btn btn-primary">SALVAR AVALIAÇÃO</button>
+                <button className="movie-details-btn btn btn-primary">
+                    SALVAR AVALIAÇÃO
+                </button>
             </div>
         </form>
 

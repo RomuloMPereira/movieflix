@@ -14,11 +14,12 @@ type ParamsType = {
 const MovieDetails = () => {
     const { movieId } = useParams<ParamsType>();
     const [movie, setMovie] = useState<Movie>();
+    const [changed, setChanged] = useState(false);
 
     const getMovie = useCallback(() => {
         makePrivateRequest({ url: `/movies/${movieId}` })
             .then(response => setMovie(response.data))
-    }, [movieId]);
+    }, [movieId, changed]);
 
     useEffect(() => {
         getMovie();
@@ -39,7 +40,7 @@ const MovieDetails = () => {
                     </div>
                 </div>
             </div>
-            <Form movieId={movie?.id} />
+            <Form movieId={movie?.id} onChange={changed => setChanged(changed)} />
             <div className="movie-details-rewiews-container card-base">
                 {movie?.reviews?.map(review => (
                     <div className="movie-details-review-container" key={review.id}>
