@@ -5,6 +5,7 @@ import Form from '../Form';
 import { useParams } from 'react-router-dom';
 import { Movie } from 'core/types/Movie';
 import { makePrivateRequest } from 'core/utils/request';
+import { isAllowedByRole } from 'core/utils/auth';
 
 
 type ParamsType = {
@@ -40,7 +41,9 @@ const MovieDetails = () => {
                     </div>
                 </div>
             </div>
-            <Form movieId={movie?.id} onChange={changed => setChanged(changed)} />
+            {isAllowedByRole(['ROLE_MEMBER']) && (
+                <Form movieId={movie?.id} onChange={changed => setChanged(changed)} />
+            )}
             <div className="movie-details-rewiews-container card-base">
                 {movie?.reviews?.map(review => (
                     <div className="movie-details-review-container" key={review.id}>
