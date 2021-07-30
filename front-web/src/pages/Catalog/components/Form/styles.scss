@@ -1,0 +1,26 @@
+.movie-details-form {
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-details-input {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    height: 75px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #9e9e9e;
+    mix-blend-mode: normal;
+    margin-bottom: 15px;
+}
+
+.movie-details-btn {
+    border-radius: 10px;
+    width: 335px;
+    height: 50px;
+}
