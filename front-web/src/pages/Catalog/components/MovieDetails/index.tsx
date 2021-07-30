@@ -18,7 +18,7 @@ const MovieDetails = () => {
     const getMovie = useCallback(() => {
         makePrivateRequest({ url: `/movies/${movieId}` })
             .then(response => setMovie(response.data))
-    }, []);
+    }, [movieId]);
 
     useEffect(() => {
         getMovie();
@@ -39,10 +39,10 @@ const MovieDetails = () => {
                     </div>
                 </div>
             </div>
-            <Form />
+            <Form movieId={movie?.id} />
             <div className="movie-details-rewiews-container card-base">
                 {movie?.reviews?.map(review => (
-                    <div className="movie-details-review-container">
+                    <div className="movie-details-review-container" key={review.id}>
                         <div className="movie-details-review-user">
                             <StarIcon />
                             <h3 className="movie-details-review-username">{review.user.name}</h3>
