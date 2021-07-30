@@ -27,3 +27,9 @@
     line-height: 100%;
     margin-left: 1050px;
 }
+
+@media (max-width: 768px) {
+    .nav-link {
+        margin-left: 60%;
+    }
+}

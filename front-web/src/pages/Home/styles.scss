@@ -30,3 +30,28 @@
     width: 414.86px;
     height: 307px;
 }
+
+@media (max-width: 768px) {
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+
+    .home-content {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-right: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
