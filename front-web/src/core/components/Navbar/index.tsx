@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <nav className="main-nav bg-primary">
-            <Link to="/" className="nav-logo-text">
+            <Link to="/movies" className="nav-logo-text">
                 <h4>MovieFlix</h4>
             </Link>
             {currentUser && (

@@ -5,6 +5,7 @@ import { makePrivateRequest } from 'core/utils/request';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
 import MovieCard from './components/MovieCard';
 import './styles.scss';
@@ -47,7 +48,9 @@ const Catalog = () => {
             <div className="catalog-movies">
                 {isLoading ? <MovieCardLoader /> : (
                     moviesResponse?.content.map(movie => (
-                        <MovieCard movie={movie} key={movie.id} />
+                        <Link to={`/movies/${movie.id}`} key={movie.id}>
+                            <MovieCard movie={movie} key={movie.id} />
+                        </Link>
                     ))
                 )}
             </div>

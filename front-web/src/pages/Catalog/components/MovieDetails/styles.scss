@@ -1,0 +1,129 @@
+.movie-details-container {
+    padding-top: 40px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.movie-details-info-container {
+    display: flex;
+    flex-direction: row;
+    padding: 25px 30px 30px 20px;
+    margin-bottom: 15px;
+}
+
+.movie-details-img {
+    width: 530px;
+    height: 320px;
+}
+
+.movie-details-info {
+    padding-left: 55px;
+}
+
+.movie-details-title {
+    font-size: 36px;
+    line-height: 49px;
+    letter-spacing: -0.015em;
+    mix-blend-mode: normal;
+    color: #fff;
+}
+
+.movie-details-year {
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+    color: #ffc700;
+    mix-blend-mode: normal;
+}
+
+.movie-details-subtitle {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    mix-blend-mode: normal;
+    color: #fff;
+}
+
+.movie-details-sinopse-container {
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    padding: 15px 25px 5px 20px;
+    margin-top: 10px;
+}
+
+.movie-details-sinopse {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: justify;
+    letter-spacing: -0.015em;
+    color: #9e9e9e;
+}
+
+.movie-details-form {
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-details-input {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    height: 75px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #9e9e9e;
+    mix-blend-mode: normal;
+    margin-bottom: 15px;
+}
+
+.movie-details-btn {
+    border-radius: 10px;
+    width: 335px;
+    height: 50px;
+}
+
+.movie-details-rewiews-container {
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 17px;
+    margin-bottom: 40px;
+}
+
+.movie-details-review-container {
+    margin-top: 15px;
+}
+
+.movie-details-review-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.movie-details-review-username {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    mix-blend-mode: normal;
+    color: #fff;
+    padding-left: 15px;
+}
+
+.movie-details-review {
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    padding: 15px 15px 15px 15px;
+}
+
+.movie-details-review-text {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: justify;
+    letter-spacing: -0.015em;
+    color: #9e9e9e;
+}
