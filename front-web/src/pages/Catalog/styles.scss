@@ -19,3 +19,13 @@
         justify-content: center;
     }
 }
+
+@media (max-width: 576px) {
+    .catalog-container {
+        padding: 15px 20px 40px 20px;
+    }
+
+    .catalog-movies {
+        margin-top: 15px;
+    }
+}
