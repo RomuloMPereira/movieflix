@@ -24,3 +24,9 @@
     width: 335px;
     height: 50px;
 }
+
+@media (max-width: 576px) {
+    .movie-details-btn {
+        width: 295.2px;
+    }
+}

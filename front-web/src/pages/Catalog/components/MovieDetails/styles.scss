@@ -112,3 +112,17 @@
         height: 100%;
     }
 }
+
+@media (max-width: 576px) {
+    .movie-details-container {
+        padding: 20px 20px;
+    }
+
+    .movie-details-info-container {
+        padding: 15px 0px;
+    }
+
+    .movie-details-info {
+        padding: 15px 20px;
+    }
+}
