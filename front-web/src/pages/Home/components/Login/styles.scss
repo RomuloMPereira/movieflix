@@ -32,3 +32,14 @@
     padding-top: 50px;
     padding-bottom: 90px;
 }
+
+@media (max-width: 576px) {
+    .login-container {
+        width: 110%;
+    }
+
+    .input-login {
+        width: 330px;
+        height: 40px;
+    }
+}

@@ -18,3 +18,14 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 576px) {
+    .btn-icon {
+        width: 300px;
+        height: 40px;
+    }
+
+    .btn-icon-content {
+        width: 30px;
+    }
+}

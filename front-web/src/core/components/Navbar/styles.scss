@@ -33,3 +33,15 @@
         margin-left: 60%;
     }
 }
+
+@media (max-width: 576px) {
+    .nav-link {
+        margin-left: 30%;
+    }
+
+    .nav-logo-text {
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: -0.015em;
+    }
+}

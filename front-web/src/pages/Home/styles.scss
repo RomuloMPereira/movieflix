@@ -55,3 +55,50 @@
         align-items: center;
     }
 }
+
+@media (max-width: 576px) {
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+
+    .home-container {
+        width: 100%;
+    }
+
+    .home-content {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-right: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-title {
+        font-size: 26px;
+        line-height: 35px;
+        text-align: center;
+        letter-spacing: -0.015em;
+    }
+
+    .text-subtitle {
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        letter-spacing: -0.015em;
+    }
+
+    .home-image {
+        width: 100%;
+    }
+}
